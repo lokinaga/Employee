@@ -47,5 +47,11 @@ public class Employee {
 		this.salary = salary;
 	}
 	
+	public String toString() {
+		return "id"+" "+getId()+"name"+" "+getName()+"salary"+" "+getSalary()+"gender"+" "+getGender();
+	}
+	
+	}
+	
 
-}
+

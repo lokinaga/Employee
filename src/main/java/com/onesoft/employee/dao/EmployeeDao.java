@@ -2,6 +2,9 @@ package com.onesoft.employee.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +12,7 @@ import com.onesoft.employee.entity.Employee;
 import com.onesoft.employee.repository.EmployeeRepository;
 @Repository
 public class EmployeeDao {
+	public static Logger log = Logger.getLogger(EmployeeDao.class);
 @Autowired
 EmployeeRepository er;
 	public String insertEmployee(Employee e) {
@@ -37,6 +41,8 @@ EmployeeRepository er;
 		return er.getBySalary(salary);
 	}
 	public List<Employee> getAllEmployee() {
+		PropertyConfigurator.configure("log.properties");
+		 log.info( er.findAll());
 		
 		return er.findAll();
 	}

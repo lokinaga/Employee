@@ -4,7 +4,9 @@ package com.onesoft.employee.controller;
 
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +20,9 @@ import com.onesoft.employee.exception.NameNotFoundException;
 import com.onesoft.employee.exception.SalaryNotFoundException;
 import com.onesoft.employee.service.EmployeeService;
 
-import jakarta.persistence.Transient;
 
 @RestController
+
 public class EmployeeController {
 	public static Logger log = Logger.getLogger(EmployeeController.class);
 	@Autowired
@@ -54,7 +56,7 @@ public class EmployeeController {
    @GetMapping(value="/getAllEmployee")
    public List<Employee> getAllEmployee(){
 	   PropertyConfigurator.configure("log.properties");
-		 log.info(es.getAllEmployee());
+		 log.info( es.getAllEmployee());
 	   return es.getAllEmployee()
 ;   }
    @PostMapping(value="/setAllEmployee")

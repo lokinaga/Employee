@@ -2,6 +2,9 @@ package com.onesoft.employee.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import com.onesoft.employee.exception.SalaryNotFoundException;
 
 @Service
 public class EmployeeService {
+	public static Logger log = Logger.getLogger(EmployeeService.class);
 	@Autowired
 	EmployeeDao ed;
 
@@ -75,6 +79,8 @@ public class EmployeeService {
 	}
 
 	public List<Employee> getAllEmployee() {
+		PropertyConfigurator.configure("log.properties");
+		 log.info( ed.getAllEmployee());
 
 		return ed.getAllEmployee();
 	}
